@@ -8,7 +8,7 @@ def index():
 
 @app.route('/map/<string:date>')
 def create_map(date):
-    database = r"C:\Users\Isa\Desktop\python\mapcatweb\map_db.db"
+    database = "map_db.db"
     conn = create_db.create_connection(database)
     cur = conn.cursor()
 
@@ -36,7 +36,7 @@ def create_map(date):
 
 @app.route('/maprange/<string:datefrom>/<string:dateto>')
 def create_maprange(datefrom, dateto):
-    database = r"C:\Users\Isa\Desktop\python\mapcatweb\map_db.db"
+    database = "map_db.db"
     conn = create_db.create_connection(database)
     cur = conn.cursor()
 
@@ -64,7 +64,7 @@ def create_maprange(datefrom, dateto):
 
 @app.route('/map_provincia/<string:date_provincia>')
 def create_map_provincia(date_provincia):
-    database = r"C:\Users\Isa\Desktop\python\mapcatweb\map_db.db"
+    database = "map_db.db"
     conn = create_db.create_connection(database)
     cur = conn.cursor()
     sql_select_all_date = """ SELECT DISTINCT(post_date) AS d FROM post_ocurrences_provincia ocu ORDER BY post_date
@@ -87,7 +87,7 @@ def create_map_provincia(date_provincia):
 
 @app.route('/maprange_provincia/<string:datefrom_provincia>/<string:dateto_provincia>')
 def create_maprange_provincia(datefrom_provincia, dateto_provincia):
-    database = r"C:\Users\Isa\Desktop\python\mapcatweb\map_db.db"
+    database = "map_db.db"
     conn = create_db.create_connection(database)
     cur = conn.cursor()
     sql_select_all_date = """ SELECT DISTINCT(post_date) AS d FROM post_ocurrences_provincia ocu ORDER BY post_date

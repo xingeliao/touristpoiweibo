@@ -13,7 +13,7 @@ def drop_table(conn, table_name):
     c.execute("DROP TABLE " + table_name + ";")
 
 def main():
-    database = r"C:\Users\Isa\Desktop\python\mapcatweb\map_db.db"
+    database = "map_db.db"
     sql_create_locationdata_table = """ CREATE TABLE IF NOT EXISTS locations (
                                         id integer PRIMARY KEY,
                                         location text NOT NULL,
