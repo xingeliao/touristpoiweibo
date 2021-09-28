@@ -2,9 +2,6 @@ from flask import Flask, render_template
 app = Flask(__name__)
 import create_db
 
-def getApp():
-    return app
-
 @app.route('/')
 def index():
     return 'a'
