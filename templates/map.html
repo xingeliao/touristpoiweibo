@@ -57,15 +57,15 @@
         {% for point in points_data %}
 
           var customColor = '#f4e195';
-          if ({{ point[2] }} > 2)
-            customColor = "#fdcc8a";
           if ({{ point[2] }} > 5)
-            customColor = "#fc8d59";
+            customColor = "#fdcc8a";
           if ({{ point[2] }} > 10)
-            customColor = "#e34a33";
+            customColor = "#fc8d59";
           if ({{ point[2] }} > 20)
-            customColor = "#d42b11";
+            customColor = "#e34a33";
           if ({{ point[2] }} > 50)
+            customColor = "#d42b11";
+          if ({{ point[2] }} > 100)
             customColor = "#b31800";
 
           svgIcon = L.divIcon({
@@ -91,7 +91,7 @@
         var dates_select = L.control({position: 'topright'});
         dates_select.onAdd = function (map) {
           var div = L.DomUtil.create('div', 'info legend');
-          div.innerHTML = "<p>Seleccionar mes específico</p><select id='data_select' class='data-select' name='date[]' multiple='multiple'>{% for date_option in date_options %}<option value='{{ date_option[0] }}'>{{ date_option[0] }}</option>{% endfor %}</select><button id='send-date'>Ver</button><p>Seleccionar desde .. hasta ..</p><select id='data_from' class='data-from' name='date'>{% for date_option in date_options %}<option value='{{ date_option[0] }}'>{{ date_option[0] }}</option>{% endfor %}</select><select id='data_to' class='data-to' name='date'>{% for date_option in date_options %}<option value='{{ date_option[0] }}'>{{ date_option[0] }}</option>{% endfor %}</select><button id='send-daterange'>Ver</button><button id='send-daterange-provincia'>VerP</button>";
+          div.innerHTML = "<p>Seleccionar mes específico</p><select id='data_select' class='data-select' name='date[]' multiple='multiple'>{% for date_option in date_options %}<option value='{{ date_option[0] }}'>{{ date_option[0] }}</option>{% endfor %}</select><button id='send-date'>Ver</button><button id='send-date-provincia'>Ver por ciudades</button><p>Seleccionar desde .. hasta ..</p><select id='data_from' class='data-from' name='date'>{% for date_option in date_options %}<option value='{{ date_option[0] }}'>{{ date_option[0] }}</option>{% endfor %}</select><select id='data_to' class='data-to' name='date'>{% for date_option in date_options %}<option value='{{ date_option[0] }}'>{{ date_option[0] }}</option>{% endfor %}</select><button id='send-daterange'>Ver</button><button id='send-daterange-provincia'>Ver por ciudades</button>";
           return div;
         }
 
@@ -99,7 +99,7 @@
         legend.onAdd = function (map) {
 
           var div = L.DomUtil.create('div', 'info legend'),
-            grades = [0, 2, 5, 10, 20, 50],
+            grades = [0, 5, 10, 20, 50, 100],
             labels = [],
             colors = ['#f4e195',"#fdcc8a", "#fc8d59", "#e34a33", "#d42b11", "#b31800"],
             from, to;
@@ -130,6 +130,10 @@
 
         $('#send-daterange').on('click', function() {
           window.location.href = '/maprange/' + jQuery('.data-from').select2("val") + '/' +  jQuery('.data-to').select2("val");
+        });
+
+        $('#send-date-provincia').on('click', function() {
+          window.location.href = '/map_provincia/' + jQuery('.data-select').select2("val")
         });
 
         $('#send-daterange-provincia').on('click', function() {
