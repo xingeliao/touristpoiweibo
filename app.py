@@ -1,14 +1,14 @@
 from flask import Flask, render_template
-from datetime import date
+from datetime import date as dt
 
 app = Flask(__name__)
 import create_db
 
 @app.route('/')
 def index():
-    today = date.today()
-    date = today.strftime("%y-%m")
-    return create_map(date)
+    today = dt.today()
+    date_today = today.strftime("%y-%m")
+    return create_map(date_today)
 
 @app.route('/map/<string:date>')
 def create_map(date):
