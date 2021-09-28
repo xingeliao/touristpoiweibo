@@ -38,8 +38,8 @@
         // }).addTo(map);
 
         var map = L.map('mapid', {
-      		zoom: 10,
-          center: [41.38959730921959, 2.1715774854383176],
+      		zoom: 7,
+          center: [40.42769757728913, -3.4862041592560904],
           layers: L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
           layers: [
             L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
@@ -91,7 +91,7 @@
         var dates_select = L.control({position: 'topright'});
         dates_select.onAdd = function (map) {
           var div = L.DomUtil.create('div', 'info legend');
-          div.innerHTML = "<p>Seleccionar mes específico</p><select id='data_select' class='data-select' name='date[]' multiple='multiple'>{% for date_option in date_options %}<option value='{{ date_option[0] }}'>{{ date_option[0] }}</option>{% endfor %}</select><button id='send-date'>Ver</button><button id='send-date-provincia'>Ver por ciudades</button><p>Seleccionar desde .. hasta ..</p><select id='data_from' class='data-from' name='date'>{% for date_option in date_options %}<option value='{{ date_option[0] }}'>{{ date_option[0] }}</option>{% endfor %}</select><select id='data_to' class='data-to' name='date'>{% for date_option in date_options %}<option value='{{ date_option[0] }}'>{{ date_option[0] }}</option>{% endfor %}</select><button id='send-daterange'>Ver</button><button id='send-daterange-provincia'>Ver por ciudades</button>";
+          div.innerHTML = "<p>Seleccionar mes específico</p><select id='data_select' class='data-select' name='date[]' multiple='multiple' style='width:50px;'>{% for date_option in date_options %}<option value='{{ date_option[0] }}'>{{ date_option[0] }}</option>{% endfor %}</select><button id='send-date'>Ver</button><button id='send-date-provincia'>Ver por ciudades</button><p>Seleccionar desde .. hasta ..</p><select id='data_from' class='data-from' name='date'>{% for date_option in date_options %}<option value='{{ date_option[0] }}'>{{ date_option[0] }}</option>{% endfor %}</select><select id='data_to' class='data-to' name='date'>{% for date_option in date_options %}<option value='{{ date_option[0] }}'>{{ date_option[0] }}</option>{% endfor %}</select><button id='send-daterange'>Ver</button><button id='send-daterange-provincia'>Ver por ciudades</button>";
           return div;
         }
 
