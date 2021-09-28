@@ -6,9 +6,10 @@ import create_db
 
 @app.route('/')
 def index():
-    today = dt.today()
-    date_today = today.strftime("%y-%m")
-    return create_map(date_today)
+    #today = dt.today()
+    #date_today = today.strftime("%y-%m")
+    #return create_map(date_today)
+    return create_maprange('2017-01', '2020-12')
 
 @app.route('/map/<string:date>')
 def create_map(date):
